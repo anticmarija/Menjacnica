@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Menjacnica {
 
 	private String ime; 
-	private LinkedList <Valuta> valute = new LinkedList<Valuta>();
+	private  LinkedList <Valuta> valute = new LinkedList<Valuta>();
 	
 	public String getIme() {
 		return ime;

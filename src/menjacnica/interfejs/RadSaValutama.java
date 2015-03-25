@@ -6,11 +6,12 @@ import java.util.LinkedList;
 import menjacnica.Valuta;
 
 public class RadSaValutama implements MenjacnicaInterfejs {
+	
+	private LinkedList <Valuta> valute = new LinkedList<Valuta>();
 
-	private LinkedList<Valuta> valute = new LinkedList<Valuta>();
 	public void dodajKursNaDan(String valuta, double kurs, GregorianCalendar dan) {
 		
-		Valuta v = new Valuta ();
+		Valuta v = new Valuta();
 		v.setDatum(dan);
 		v.setSrednjiKurs(kurs);
 		v.setNaziv(valuta);
@@ -20,21 +21,24 @@ public class RadSaValutama implements MenjacnicaInterfejs {
 	}
 
 	public void obrisiKursZaDan(String valuta, GregorianCalendar dan) {
-		for (int i =0; i < valute.size(); i++) {	
-			if (valute.get(i).getNaziv().equals(valuta))
+		
+		for (int i = 0; i < valute.size(); i++) {
+			if (!valute.get(i).getDatum().before(dan) && !valute.get(i).getDatum().after(dan)) {
+				
 				valute.remove(valute.get(i));
+			}
 		}
-
 	}
 
 	public double pronadjiKursZaDan(String valuta, GregorianCalendar dan) {
 		
 		double vrednost = 0;
-		for (int i =0; i < valute.size(); i++) {	
-			if (valute.get(i).getNaziv().equals(valuta))
-				vrednost= valute.get(i).getSrednjiKurs();
+
+		for (int i=0; i < valute.size(); i++) {
+			if (valute.get(i).getNaziv().equals(valuta) && 
+					!valute.get(i).getDatum().before(dan) && !valute.get(i).getDatum().after(dan))
+				vrednost = valute.get(i).getSrednjiKurs();
 		}
-		
 		return vrednost;
 	}
 

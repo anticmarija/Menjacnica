@@ -12,6 +12,9 @@ public class Menjacnica {
 	}
 
 	public void setIme(String ime) {
+		if (ime == null || ime.equals(""))
+			throw new RuntimeException("Morate uneti ime.");
+		
 		this.ime = ime;
 	}
 

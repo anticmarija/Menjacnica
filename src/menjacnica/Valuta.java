@@ -10,7 +10,7 @@ public class Valuta {
 	private GregorianCalendar datum;
 	private double prodajniKurs;
 	private double kupovniKurs;
-	private double sredniKurs;
+	private double srednjiKurs;
 	
 
 	public String getNaziv() {
@@ -43,11 +43,35 @@ public class Valuta {
 	public void setKupovniKurs(double kupovniKurs) {
 		this.kupovniKurs = kupovniKurs;
 	}
-	public double getSredniKurs() {
-		return sredniKurs;
+	public double getSrednjiKurs() {
+		return srednjiKurs;
 	}
-	public void setSredniKurs(double sredniKurs) {
-		this.sredniKurs = sredniKurs;
+	public void setSrednjiKurs(double srednjiKurs) {
+		this.srednjiKurs = srednjiKurs;
+	}
+	
+	
+	public String toString () {
+		return "Valuta: "+naziv+", skraceno " +skraceniNaziv+" na dan: "+datum+" ima prodajni kurs: "
+				+prodajniKurs+", kupovni: "+kupovniKurs+" i srednji: "+srednjiKurs;
+	
+	}
+	
+	public boolean equals (Object obj) {
+		if (this == obj)
+		return true;
+	
+	if (obj == null)
+		return false;
+	
+	if (this.getClass() != obj.getClass())
+		return false;
+	
+	Valuta v = (Valuta) obj;
+	if (this.getNaziv().equals(v.getNaziv()))
+		return true;
+	
+	return false;
 	}
 	
 	
